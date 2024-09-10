@@ -40,26 +40,23 @@ heap_t *heapify_up(heap_t *node)
 heap_t *heap_insert(heap_t **root, int value)
 {
 	heap_t *new_node, *current;
-	heap_t **queue[1024]; /* Array for breadth-first search */
+	heap_t **queue[1024]; 
 	int front = 0, back = 0;
 
 	if (root == NULL)
 		return (NULL);
 
-	/* If the root is NULL, create a new root */
 	if (*root == NULL)
 	{
 		*root = binary_tree_node(NULL, value);
 		return (*root);
 	}
 
-	/* BFS to find the first available position */
-	queue[back++] = root; /* Enqueue the root */
+	queue[back++] = root;
 	while (front < back)
 	{
-		current = *queue[front++]; /* Dequeue */
+		current = *queue[front++]; 
 
-		/* Check if left child exists, else insert */
 		if (current->left == NULL)
 		{
 			new_node = binary_tree_node(current, value);
@@ -68,10 +65,9 @@ heap_t *heap_insert(heap_t **root, int value)
 		}
 		else
 		{
-			queue[back++] = &current->left; /* Enqueue left child */
+			queue[back++] = &current->left;
 		}
 
-		/* Check if right child exists, else insert */
 		if (current->right == NULL)
 		{
 			new_node = binary_tree_node(current, value);
@@ -80,9 +76,9 @@ heap_t *heap_insert(heap_t **root, int value)
 		}
 		else
 		{
-			queue[back++] = &current->right; /* Enqueue right child */
+			queue[back++] = &current->right;
 		}
 	}
 
-	return (NULL); /* Shouldn't happen if the heap is valid */
+	return (NULL);
 }
