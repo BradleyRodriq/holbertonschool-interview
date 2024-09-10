@@ -40,7 +40,7 @@ heap_t *heapify_up(heap_t *node)
 heap_t *heap_insert(heap_t **root, int value)
 {
 	heap_t *new_node, *current;
-	heap_t **queue[1024]; 
+	heap_t **queue[1024];
 	int front = 0, back = 0;
 
 	if (root == NULL)
@@ -55,8 +55,7 @@ heap_t *heap_insert(heap_t **root, int value)
 	queue[back++] = root;
 	while (front < back)
 	{
-		current = *queue[front++]; 
-
+		current = *queue[front++];
 		if (current->left == NULL)
 		{
 			new_node = binary_tree_node(current, value);
@@ -79,6 +78,5 @@ heap_t *heap_insert(heap_t **root, int value)
 			queue[back++] = &current->right;
 		}
 	}
-
 	return (NULL);
 }
