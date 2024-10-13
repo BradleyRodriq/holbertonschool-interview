@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-"""_summary_
+""" 0-stats.py
+a script that reads stdin line by line and computes metrics
 """
 import sys
 import signal
@@ -18,7 +19,7 @@ status_code_counts = {
 }
 LINE_COUNT = 0
 
-# Function to print the statistics
+
 def print_stats():
     """ Prints the total file size and counts for each status code """
     print(f"File size: {TOTAL_FILE_SIZE}")
@@ -26,10 +27,12 @@ def print_stats():
         if status_code_counts[code] > 0:
             print(f"{code}: {status_code_counts[code]}")
 
+
 def signal_handler(sig, frame):
     """ Handles keyboard interruption (CTRL + C) and prints statistics """
     print_stats()
     sys.exit(0)
+
 
 signal.signal(signal.SIGINT, signal_handler)
 
