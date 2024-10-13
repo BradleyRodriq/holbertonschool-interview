@@ -28,7 +28,7 @@ def print_stats():
             print(f"{code}: {status_code_counts[code]}")
 
 
-def signal_handler(sig, frame):
+def signal_handler():
     """ Handles keyboard interruption (CTRL + C) and prints statistics """
     print_stats()
     sys.exit(0)
