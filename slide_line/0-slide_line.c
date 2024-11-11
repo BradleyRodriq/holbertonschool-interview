@@ -93,7 +93,7 @@ static int slide_right(int *line, size_t size)
 
     /* Final slide to the right (fill any gaps created by merges) */
     j = size - 1;
-    for (i = size - 1; i >= 0; i--)
+    for (i = size - 1; i != (size_t)-1; i--)
     {
         if (line[i] != 0)
         {
